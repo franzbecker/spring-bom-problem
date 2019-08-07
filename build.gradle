@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencyManagement {
+     imports {
+          mavenBom 'org.springframework.boot:spring-boot-dependencies:2.1.7.RELEASE'
+     }
+}
+
+dependencies {
+    compile 'com.fasterxml.jackson.core:jackson-core'
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+}
