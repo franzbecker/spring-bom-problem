@@ -9,7 +9,18 @@ repositories {
 
 dependencyManagement {
      imports {
-          mavenBom 'org.springframework.boot:spring-boot-dependencies:2.1.7.RELEASE'
+        // See https://docs.spring.io/dependency-management-plugin/docs/current/reference/html/#dependency-management-configuration-bom-import-override-property
+        mavenBom('org.springframework.boot:spring-boot-dependencies:2.1.7.RELEASE') {
+            bomProperties([
+                'jackson.version': '2.9.9'
+                // => com.fasterxml.jackson.core:jackson-core -> 2.9.9
+                // => com.fasterxml.jackson.core:jackson-databind -> 2.9.9
+
+                // 'jackson.version': '2.9.9.20190807'
+                // => com.fasterxml.jackson.core:jackson-core -> 2.9.9.20190807 FAILED
+                // => com.fasterxml.jackson.core:jackson-databind -> 2.9.9.3
+            ])
+        }
      }
 }
 
